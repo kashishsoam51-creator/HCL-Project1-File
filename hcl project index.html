@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pure HTML Phishing URL Scanner  Kashish Soam (Adm. no=2026B01010103)</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #1e1b4b, #312e81, #0284c7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .box {
+      background: white;
+      padding: 50px;
+      border-radius: 20px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+      width: 600px;
+      text-align: center;
+      border-top: 8px solid #06b6d4;
+    }
+
+    h1 {
+      font-size: 36px;
+      color: #2563eb;
+      margin-top: 10px;
+    }
+
+    p {
+      color: #475569;
+      font-size: 18px;
+      margin-bottom: 25px;
+    }
+
+    input {
+      width: 90%;
+      padding: 16px;
+      margin-bottom: 20px;
+      border: 3px solid #cbd5e1;
+      border-radius: 10px;
+      font-size: 18px;
+      outline: none;
+    }
+
+    /* Automatically turns green when URL is valid AND starts with https:// */
+    input:valid {
+      border-color: #10b981;
+      background-color: #ecfdf5;
+    }
+
+    /* Automatically turns red when user types an invalid URL or http:// */
+    input:not(:placeholder-shown):invalid {
+      border-color: #f43f5e;
+      background-color: #fff1f2;
+    }
+
+    button {
+      width: 95%;
+      padding: 16px;
+      background: linear-gradient(90deg, #06b6d4, #3b82f6, #8b5cf6);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .status {
+      margin-top: 20px;
+      padding: 16px;
+      border-radius: 10px;
+      font-size: 18px;
+      font-weight: bold;
+      display: none;
+    }
+
+    /* Show SAFE banner automatically via CSS when input is valid */
+    input:valid ~ .safe-msg {
+      display: block;
+      background-color: #10b981;
+      color: white;
+    }
+
+    /* Show WARNING banner automatically via CSS when input is invalid */
+    input:not(:placeholder-shown):invalid ~ .warn-msg {
+      display: block;
+      background-color: #f43f5e;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <form class="box" onsubmit="return false;">
+    <div style="font-size: 55px;">🛡️</div>
+    <h1>Phishing URL Scanner</h1>
+    <p>Enter a website link to check if it is a valid URL with HTTPS</p>
+
+    <!-- Pure HTML5 URL & HTTPS validation -->
+    <input 
+      type="url" 
+      required 
+      pattern="https://.+\..+" 
+      placeholder="https://example.com"
+      title="Must be a valid URL starting with https://">
+
+    <button type="submit">🔍 Check URL</button>
+
+    <div class="status safe-msg">✅ SAFE: Valid URL with secure HTTPS!</div>
+    <div class="status warn-msg">🚨 WARNING: Invalid URL or missing HTTPS!</div>
+  </form>
+
+</body>
+</html>
